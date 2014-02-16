@@ -1,10 +1,11 @@
-// This library calculates the current phase of the moon
-// as well as finds the dates of the recent moon phases.
-// Ported from python version found here:
-// https://bazaar.launchpad.net/~keturn/py-moon-phase/trunk/annotate/head:/moon.py
-//
-// Author: Ryan Seys
-
+/**
+ * This library calculates the current phase of the moon
+ * as well as finds the dates of the recent moon phases.
+ * Ported from python version found here:
+ * https://bazaar.launchpad.net/~keturn/py-moon-phase/trunk/annotate/head:/moon.py
+ *
+ * Author: Ryan Seys (https://github.com/ryanseys)
+ */
 
 // Phases of the moon & precision
 var PRECISION = 0.05;
@@ -14,13 +15,19 @@ var FULL = 2 / 4.0;
 var LAST = 3 / 4.0;
 var NEXTNEW = 4 / 4.0;
 
-// Source: http://javascript.about.com/library/bljulday.htm
+/**
+ * Gets the Julian value from a date object.
+ * Source: http://javascript.about.com/library/bljulday.htm
+ * @return {[type]} [description]
+ */
 Date.prototype.getJulian = function() {
-  return (this / 86400000) -
-  (this.getTimezoneOffset()/1440) + 2440587.5;
+  return (this / 86400000) - (this.getTimezoneOffset()/1440) + 2440587.5;
 };
 
-// Source: http://blog.bahrenburgs.com/2011/01/javascript-julian-day-conversions.html
+/**
+ * Converts a Number in Julian date form to a Date object.
+ * Source: http://blog.bahrenburgs.com/2011/01/javascript-julian-day-conversions.html
+ */
 Number.prototype.Julian2Date = function() {
   var X = parseFloat(this)+0.5;
   var Z = Math.floor(X); //Get day without time
@@ -49,9 +56,13 @@ Number.prototype.Julian2Date = function() {
   UT *= 60;
   var second = Math.round(UT);
 
-  return new Date(Date.UTC(year, month, day, hour, minute, second));
+  return new Date(year, month, day, hour, minute, second);
 };
 
+/**
+ * Astronomical Constants
+ * @type {Object}
+ */
 const c = {
   // JDN stands for Julian Day Number
   // Angles here are in degrees
@@ -113,10 +124,20 @@ function fixangle(a) {
   return a - 360.0 * Math.floor(a/360.0);
 }
 
+/**
+ * Convert degrees to radians
+ * @param  {Number} d Angle in degrees
+ * @return {Number}   Angle in radians
+ */
 function torad(d) {
   return d * Math.PI / 180.0;
 }
 
+/**
+ * Convert radians to degrees
+ * @param  {Number} r Angle in radians
+ * @return {Number}   Angle in degrees
+ */
 function todeg(r) {
   return r * 180.0 / Math.PI;
 }
@@ -129,9 +150,10 @@ function dcos(d) {
   return Math.cos(torad(d));
 }
 
+/**
+ * Solve the equation of Kepler.
+ */
 function kepler(m, ecc) {
-  //Solve the equation of Kepler.
-
   var epsilon = 1e-6;
 
   m = torad(m);
@@ -148,6 +170,11 @@ function kepler(m, ecc) {
   return e;
 }
 
+/**
+ * Finds the phase information for specific date.
+ * @param  {Date} phase_date Date to get phase information of.
+ * @return {Object}          Phase data
+ */
 function phase(phase_date) {
   if(!phase_date) {
     phase_date = (new Date()).getJulian();
@@ -242,12 +269,14 @@ function phase(phase_date) {
   return res;
 }
 
+/**
+ * Find time of phases of the moon which surround the current date.
+ * Five phases are found, starting and ending with the new moons
+ * which bound the current lunation.
+ * @param  {Date} sdate Date to start hunting from (defaults to current date)
+ * @return {Object}     Object containing recent past and future phases
+ */
 function phase_hunt(sdate) {
-  // Find time of phases of the moon which surround the current date.
-
-  // Five phases are found, starting and ending with the new moons
-  // which bound the current lunation.
-
   if(!sdate) {
     sdate = new Date();
   }
@@ -284,101 +313,110 @@ function phase_hunt(sdate) {
   return phases;
 }
 
+/**
+ * Given a K value used to determine the mean phase of the new
+ * moon, and a phase selector (0.0, 0.25, 0.5, 0.75), obtain the
+ * true, corrected phase time.
+ * @param  {[type]} k      [description]
+ * @param  {[type]} tphase [description]
+ * @return {[type]}        [description]
+ */
 function truephase(k, tphase) {
-    // Given a K value used to determine the mean phase of the new
-    // moon, and a phase selector (0.0, 0.25, 0.5, 0.75), obtain the
-    // true, corrected phase time.
 
-    var apcor = false;
+  var apcor = false;
 
-    // add phase to new moon time
-    k = k + tphase;
-    // Time in Julian centuries from 1900 January 0.5
-    var t = k / 1236.85;
+  // add phase to new moon time
+  k = k + tphase;
+  // Time in Julian centuries from 1900 January 0.5
+  var t = k / 1236.85;
 
-    var t2 = t * t;
-    var t3 = t2 * t;
+  var t2 = t * t;
+  var t3 = t2 * t;
 
-    // Mean time of phase
-    var pt = (
-      2415020.75933 + c.synodic_month * k + 0.0001178 * t2 -
-      0.000000155 * t3 + 0.00033 * dsin(166.56 + 132.87 * t -
-      0.009173 * t2)
+  // Mean time of phase
+  var pt = (
+    2415020.75933 + c.synodic_month * k + 0.0001178 * t2 -
+    0.000000155 * t3 + 0.00033 * dsin(166.56 + 132.87 * t -
+    0.009173 * t2)
+  );
+
+  // Sun's mean anomaly
+  var m = 359.2242 + 29.10535608 * k - 0.0000333 * t2 - 0.00000347 * t3;
+
+  // Moon's mean anomaly
+  var mprime = 306.0253 + 385.81691806 * k + 0.0107306 * t2 + 0.00001236 * t3;
+
+  // Moon's argument of latitude
+  var f = 21.2964 + 390.67050646 * k - 0.0016528 * t2 - 0.00000239 * t3;
+
+  if ((tphase < 0.01) || (Math.abs(tphase - 0.5) < 0.01)) {
+
+    // Corrections for New and Full Moon
+    pt = pt + (
+      (0.1734 - 0.000393 * t) * dsin(m) +
+      0.0021 * dsin(2 * m) -
+      0.4068 * dsin(mprime) +
+      0.0161 * dsin(2 * mprime) -
+      0.0004 * dsin(3 * mprime) +
+      0.0104 * dsin(2 * f) -
+      0.0051 * dsin(m + mprime) -
+      0.0074 * dsin(m - mprime) +
+      0.0004 * dsin(2 * f + m) -
+      0.0004 * dsin(2 * f - m) -
+      0.0006 * dsin(2 * f + mprime) +
+      0.0010 * dsin(2 * f - mprime) +
+      0.0005 * dsin(m + 2 * mprime)
     );
 
-    // Sun's mean anomaly
-    var m = 359.2242 + 29.10535608 * k - 0.0000333 * t2 - 0.00000347 * t3;
-
-    // Moon's mean anomaly
-    var mprime = 306.0253 + 385.81691806 * k + 0.0107306 * t2 + 0.00001236 * t3;
-
-    // Moon's argument of latitude
-    var f = 21.2964 + 390.67050646 * k - 0.0016528 * t2 - 0.00000239 * t3;
-
-    if ((tphase < 0.01) || (Math.abs(tphase - 0.5) < 0.01)) {
-
-      // Corrections for New and Full Moon
+    apcor = true;
+  }
+  else if ((Math.abs(tphase - 0.25) < 0.01) || (Math.abs(tphase - 0.75) < 0.01)) {
       pt = pt + (
-        (0.1734 - 0.000393 * t) * dsin(m) +
+        (0.1721 - 0.0004 * t) * dsin(m) +
         0.0021 * dsin(2 * m) -
-        0.4068 * dsin(mprime) +
-        0.0161 * dsin(2 * mprime) -
+        0.6280 * dsin(mprime) +
+        0.0089 * dsin(2 * mprime) -
         0.0004 * dsin(3 * mprime) +
-        0.0104 * dsin(2 * f) -
-        0.0051 * dsin(m + mprime) -
-        0.0074 * dsin(m - mprime) +
-        0.0004 * dsin(2 * f + m) -
+        0.0079 * dsin(2 * f) -
+        0.0119 * dsin(m + mprime) -
+        0.0047 * dsin(m - mprime) +
+        0.0003 * dsin(2 * f + m) -
         0.0004 * dsin(2 * f - m) -
         0.0006 * dsin(2 * f + mprime) +
-        0.0010 * dsin(2 * f - mprime) +
-        0.0005 * dsin(m + 2 * mprime)
+        0.0021 * dsin(2 * f - mprime) +
+        0.0003 * dsin(m + 2 * mprime) +
+        0.0004 * dsin(m - 2 * mprime) -
+        0.0003 * dsin(2 * m + mprime)
       );
-
-      apcor = true;
+    if (tphase < 0.5) {
+        //  First quarter correction
+        pt = pt + 0.0028 - 0.0004 * dcos(m) + 0.0003 * dcos(mprime);
     }
-    else if ((Math.abs(tphase - 0.25) < 0.01) || (Math.abs(tphase - 0.75) < 0.01)) {
-        pt = pt + (
-          (0.1721 - 0.0004 * t) * dsin(m) +
-          0.0021 * dsin(2 * m) -
-          0.6280 * dsin(mprime) +
-          0.0089 * dsin(2 * mprime) -
-          0.0004 * dsin(3 * mprime) +
-          0.0079 * dsin(2 * f) -
-          0.0119 * dsin(m + mprime) -
-          0.0047 * dsin(m - mprime) +
-          0.0003 * dsin(2 * f + m) -
-          0.0004 * dsin(2 * f - m) -
-          0.0006 * dsin(2 * f + mprime) +
-          0.0021 * dsin(2 * f - mprime) +
-          0.0003 * dsin(m + 2 * mprime) +
-          0.0004 * dsin(m - 2 * mprime) -
-          0.0003 * dsin(2 * m + mprime)
-        );
-      if (tphase < 0.5) {
-          //  First quarter correction
-          pt = pt + 0.0028 - 0.0004 * dcos(m) + 0.0003 * dcos(mprime);
-      }
-      else {
-          //  Last quarter correction
-          pt = pt + -0.0028 + 0.0004 * dcos(m) - 0.0003 * dcos(mprime);
-      }
-      apcor = true;
+    else {
+        //  Last quarter correction
+        pt = pt + -0.0028 + 0.0004 * dcos(m) - 0.0003 * dcos(mprime);
     }
+    apcor = true;
+  }
 
-    if (!apcor) {
-      console.log("TRUEPHASE called with invalid phase selector ", tphase);
-    }
+  if (!apcor) {
+    console.log("TRUEPHASE called with invalid phase selector ", tphase);
+  }
 
-    return pt.Julian2Date();
+  return pt.Julian2Date();
 }
 
+/**
+ * Calculates time of the mean new Moon for a given base date.
+ * This argument K to this function is the precomputed synodic month
+ * index, given by:
+ *   K = (year - 1900) * 12.3685
+ * where year is expressed as a year and fractional year.
+ * @param  {Date} sdate   Start date
+ * @param  {[type]} k     [description]
+ * @return {[type]}       [description]
+ */
 function meanphase(sdate, k) {
-  // Calculates time of the mean new Moon for a given base date.
-  // This argument K to this function is the precomputed synodic month
-  // index, given by:
-  //                     K = (year - 1900) * 12.3685
-  // where year is expressed as a year and fractional year.
-  //
 
   // Time in Julian centuries from 1900 January 12 noon
   var delta_t = (sdate - (new Date(1900,0,1,12))) / (1000*60*60*24);
