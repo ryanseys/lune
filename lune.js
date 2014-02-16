@@ -19,10 +19,10 @@ var NEXTNEW = 4 / 4.0;
 /**
  * Gets the Julian value from a date object.
  * Source: http://javascript.about.com/library/bljulday.htm
- * @return {[type]} [description]
+ * @return {Number} Julian number representation of the date.
  */
 Date.prototype.getJulian = function() {
-  return (this / 86400000) - (this.getTimezoneOffset()/1440) + 2440587.5;
+  return (this.valueOf() / 86400000) - (this.getTimezoneOffset() / 1440) + 2440587.5;
 };
 
 /**
