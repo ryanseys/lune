@@ -17,7 +17,7 @@ var current_phase = lune.phase();
 console.log(current_phase);
 ```
 
-#### Output:
+##### Output:
 
 ```javascript
 { 
@@ -39,7 +39,7 @@ var recent_phases = lune.phase_hunt();
 console.log(recent_phases);
 ```
 
-#### Output:
+##### Output:
 
 ```javascript
 { 
