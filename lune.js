@@ -1,6 +1,7 @@
 /**
  * This library calculates the current phase of the moon
  * as well as finds the dates of the recent moon phases.
+ *
  * Ported from python version found here:
  * https://bazaar.launchpad.net/~keturn/py-moon-phase/trunk/annotate/head:/moon.py
  *

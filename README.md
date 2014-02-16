@@ -1,4 +1,4 @@
-moon
+Lune
 ====
 
-moon.js - calculate the phase of the moon
+Lune.js — calculate the phase of the moon
