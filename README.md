@@ -1,8 +1,10 @@
-# Lune
+# Lune [![Build Status](https://travis-ci.org/ryanseys/lune.png)](https://travis-ci.org/ryanseys/lune)
 
-Lune.js — calculate the phases of the moon
+Lune.js — calculate the phases of the moon. 
 
-[![Build Status](https://travis-ci.org/ryanseys/lune.png)](https://travis-ci.org/ryanseys/lune)
+![Lune](https://ryanseys.com/img/moon.png)
+
+Image graciously provided by [Mike DiLuigi.](https://www.behance.net/mikediluigi)
 
 ## Installation
 
