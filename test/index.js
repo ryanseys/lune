@@ -20,21 +20,4 @@ describe('lune', function() {
       assert.equal(JSON.stringify(feb17), JSON.stringify(lunedata));
     });
   });
-
-  describe('#phase_hunt()', function() {
-    it('should return expected values for feb 17th data', function() {
-
-      var feb17phasehunt = {
-        new_date: '2014-01-31T02:40:35.000Z',
-        q1_date: '2014-02-07T00:22:34.000Z',
-        full_date: '2014-02-15T04:54:47.000Z',
-        q3_date: '2014-02-22T22:16:56.000Z',
-        nextnew_date: '2014-03-01T13:02:42.000Z'
-      };
-
-      var lunedata = lune.phase_hunt(new Date("2014-02-17"));
-
-      assert.equal(JSON.stringify(feb17phasehunt), JSON.stringify(lunedata));
-    });
-  });
 });
