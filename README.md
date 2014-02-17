@@ -2,6 +2,8 @@
 
 Lune.js — calculate the phases of the moon
 
+[![Build Status](https://travis-ci.org/ryanseys/lune.png)](https://travis-ci.org/ryanseys/lune)
+
 ## Installation
 
 `npm install lune`
