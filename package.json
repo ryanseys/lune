@@ -1,6 +1,6 @@
 {
   "name": "lune",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Calculate the phases of the moon",
   "keywords": ["lune", "moon", "phase", "phases", "lunar"],
   "homepage": "https://github.com/ryanseys/lune",
