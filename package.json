@@ -1,9 +1,16 @@
 {
   "name": "lune",
   "version": "0.0.1",
+  "description": "Calculate the phases of the moon",
+  "keywords": ["lune", "moon", "phase", "phases", "lunar"],
+  "homepage": "https://github.com/ryanseys/lune",
   "repository": {
     "type" : "git",
     "url": "https://github.com/ryanseys/lune.git"
+  },
+  "bugs" : {
+    "url" : "https://github.com/ryanseys/lune/issues",
+    "email" : "ryan@ryanseys.com"
   },
   "main": "index.js",
   "license": "Apache-2.0"

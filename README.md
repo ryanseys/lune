@@ -1,5 +1,4 @@
-Lune
-====
+# Lune
 
 Lune.js — calculate the phases of the moon
 
@@ -20,7 +19,7 @@ console.log(current_phase);
 #### Output:
 
 ```javascript
-{ 
+{
   phase: 0.5358014231208499,
   illuminated: 0.9874029678753915,
   age: 15.822531440340462,
@@ -42,12 +41,12 @@ console.log(recent_phases);
 #### Output:
 
 ```javascript
-{ 
+{
   new_date: Thu Jan 30 2014 21:40:35 GMT-0500 (EST),
   q1_date: Thu Feb 06 2014 19:22:34 GMT-0500 (EST),
   full_date: Fri Feb 14 2014 23:54:47 GMT-0500 (EST),
   q3_date: Sat Feb 22 2014 17:16:56 GMT-0500 (EST),
-  nextnew_date: Sat Mar 01 2014 08:02:42 GMT-0500 (EST) 
+  nextnew_date: Sat Mar 01 2014 08:02:42 GMT-0500 (EST)
 }
 ```
 
