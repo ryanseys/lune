@@ -1,7 +1,7 @@
 Lune
 ====
 
-Lune.js — calculate the phase of the moon
+Lune.js — calculate the phases of the moon
 
 ## Installation
 
@@ -9,7 +9,7 @@ Lune.js — calculate the phase of the moon
 
 ## Usage
 
-#### To calculate current phase information:
+### To calculate current phase information:
 
 ```javascript
 var lune = require('lune');
@@ -17,7 +17,7 @@ var current_phase = lune.phase();
 console.log(current_phase);
 ```
 
-##### Output:
+#### Output:
 
 ```javascript
 { 
@@ -31,7 +31,7 @@ console.log(current_phase);
 }
 ```
 
-#### To search for recent phases around the current date:
+### To search for recent phases around the current date:
 
 ```javascript
 var lune = require('lune');
@@ -39,7 +39,7 @@ var recent_phases = lune.phase_hunt();
 console.log(recent_phases);
 ```
 
-##### Output:
+#### Output:
 
 ```javascript
 { 
