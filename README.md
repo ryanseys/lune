@@ -8,7 +8,7 @@ Lune.js — calculate the phases of the moon
 
 ## Usage
 
-### To calculate current phase information:
+### To calculate *current* phase information:
 
 ```javascript
 var lune = require('lune');
@@ -30,12 +30,56 @@ console.log(current_phase);
 }
 ```
 
-### To search for recent phases around the current date:
+### To calculate phase information for a *specific* date:
+
+```javascript
+var lune = require('lune');
+var some_date = new Date(2014, 1, 17);
+var some_date_phase = lune.phase(some_date);
+console.log(some_date_phase);
+```
+
+#### Output:
+
+```javascript
+{
+  phase: 0.5616632223402672,
+  illuminated: 0.9629393807872504,
+  age: 16.586245595613818,
+  distance: 396868.3763643785,
+  angular_diameter: 0.5018242066159135,
+  sun_distance: 147816061.66410872,
+  sun_angular_diameter: 0.5395080276270386
+}
+```
+
+### To search for recent phases around the *current* date:
 
 ```javascript
 var lune = require('lune');
 var recent_phases = lune.phase_hunt();
 console.log(recent_phases);
+```
+
+#### Output:
+
+```javascript
+{
+  new_date: Thu Jan 30 2014 21:40:35 GMT-0500 (EST),
+  q1_date: Thu Feb 06 2014 19:22:34 GMT-0500 (EST),
+  full_date: Fri Feb 14 2014 23:54:47 GMT-0500 (EST),
+  q3_date: Sat Feb 22 2014 17:16:56 GMT-0500 (EST),
+  nextnew_date: Sat Mar 01 2014 08:02:42 GMT-0500 (EST)
+}
+```
+
+### To search for recent phases around a *specific* date:
+
+```javascript
+var lune = require('lune');
+var some_date = new Date(2014, 1, 17);
+var some_date_phase = lune.phase_hunt(some_date);
+console.log(some_date_phase);
 ```
 
 #### Output:
