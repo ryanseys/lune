@@ -32,7 +32,7 @@ describe('lune', function() {
         nextnew_date: '2014-03-01T13:02:42.000Z'
       };
 
-      var lunedata = lune.phase_hunt(new Date(2014, 1, 17));
+      var lunedata = lune.phase_hunt(new Date("2014-02-17T00:00:00.000Z"));
 
       assert.equal(JSON.stringify(feb17phasehunt), JSON.stringify(lunedata));
     });
