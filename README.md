@@ -1,10 +1,10 @@
+<div align="center">
+  <img height="150" width="150"  src="https://ryanseys.com/img/moon.png"/>
+</div>
+
 # Lune [![Build Status](https://travis-ci.org/ryanseys/lune.png)](https://travis-ci.org/ryanseys/lune)
 
-Lune.js — calculate the phases of the moon. 
-
-![Lune](https://ryanseys.com/img/moon.png)
-
-Image graciously provided by [Mike DiLuigi.](https://www.behance.net/mikediluigi)
+Lune.js — calculate the phases of the moon.
 
 ## Installation
 
@@ -97,6 +97,10 @@ console.log(some_date_phase);
   nextnew_date: Sat Mar 01 2014 08:02:42 GMT-0500 (EST)
 }
 ```
+
+## Image
+
+Moon image graciously provided by [Mike DiLuigi.](https://www.behance.net/mikediluigi)
 
 ## Contributing
 
