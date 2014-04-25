@@ -1,5 +1,5 @@
 <div align="center">
-  <img height="150" width="150"  src="https://ryanseys.com/img/moon.png"/>
+  <img height="150" width="150"  src="http://ryanseys.com/img/moon.png"/>
 </div>
 
 # Lune [![Build Status](https://travis-ci.org/ryanseys/lune.png)](https://travis-ci.org/ryanseys/lune)
