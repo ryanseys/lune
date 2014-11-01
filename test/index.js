@@ -20,4 +20,21 @@ describe('lune', function() {
       assert.equal(JSON.stringify(feb17), JSON.stringify(lunedata));
     });
   });
+
+    describe('#phase_hunt', function() {
+        it('should handle timezones correctly', function() {
+            process.env.TZ = 'America/New_York';
+            var d = new Date(2014, 10, 1, 16, 56, 00);
+            var t = d.getTime();
+            if (1414837560000 != t) {
+                console.log('Unable to run timezone test because process.env.TZ quirk. '+
+                            'See https://github.com/joyent/node/issues/3286');
+                return;
+            }
+            var hunt = lune.phase_hunt(d);
+            // 1415292777000 incorrect EST time
+            // 1415312577000 correct UTC time
+            assert(1415312577000, hunt.full_date.getTime());
+        });
+    });
 });
