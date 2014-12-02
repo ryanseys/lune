@@ -2,7 +2,7 @@
   <img height="150" width="150"  src="http://ryanseys.com/img/moon.png"/>
 </div>
 
-# Lune [![Build Status](https://travis-ci.org/ryanseys/lune.png)](https://travis-ci.org/ryanseys/lune)
+# Lune [![Build Status](https://travis-ci.org/ryanseys/lune.svg?branch=0.2.0)](https://travis-ci.org/ryanseys/lune)
 
 Lune.js — calculate the phases of the moon.
 
