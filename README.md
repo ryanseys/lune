@@ -8,7 +8,9 @@ Lune.js — calculate the phases of the moon.
 
 ## Installation
 
-`npm install lune`
+```sh   
+npm install lune
+```
 
 ## Usage
 
