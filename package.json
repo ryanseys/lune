@@ -1,6 +1,6 @@
 {
   "name": "lune",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Calculate the phases of the moon",
   "keywords": [
     "lune",
@@ -22,9 +22,10 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "chai": "~3.5.0",
-    "mocha": "~2.4.5"
+    "mocha": "~2.4.5",
+    "standard": "^6.0.8"
   },
   "scripts": {
-    "test": "mocha --reporter min"
+    "test": "standard && mocha --reporter min"
   }
 }
