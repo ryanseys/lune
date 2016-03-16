@@ -15,7 +15,8 @@ describe('lune', function() {
         sun_angular_diameter: 0.5395080276270386
       };
 
-      var lunedata = lune.phase(new Date(2014, 1, 17));
+      // this is 17 Feb 2014 00:00 EST
+      var lunedata = lune.phase(new Date(1392613200000));
 
       assert.equal(JSON.stringify(feb17), JSON.stringify(lunedata));
     });
@@ -23,14 +24,7 @@ describe('lune', function() {
 
     describe('#phase_hunt', function() {
         it('should handle timezones correctly', function() {
-            process.env.TZ = 'America/New_York';
-            var d = new Date(2014, 10, 1, 16, 56, 00);
-            var t = d.getTime();
-            if (1414837560000 != t) {
-                console.log('Unable to run timezone test because process.env.TZ quirk. '+
-                            'See https://github.com/joyent/node/issues/3286');
-                return;
-            }
+            var d = new Date(1414837560000);
             var hunt = lune.phase_hunt(d);
             // 1415292777000 incorrect EST time
             // 1415312577000 correct UTC time
