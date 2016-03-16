@@ -18,11 +18,11 @@
     "url": "https://github.com/ryanseys/lune/issues",
     "email": "ryan@ryanseys.com"
   },
-  "main": "index.js",
+  "main": "lib/lune.js",
   "license": "Apache-2.0",
   "devDependencies": {
-    "assert": "~1.1.1",
-    "mocha": "~1.17.1"
+    "chai": "~3.5.0",
+    "mocha": "~2.4.5"
   },
   "scripts": {
     "test": "mocha --reporter min"
