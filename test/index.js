@@ -89,22 +89,22 @@ describe("lune", function() {
 });
 
 describe("julian", function() {
-  describe("#from_date", function() {
+  describe("#fromDate", function() {
     /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
     it("should convert 2000-01-01T00:00Z to 2451544.5", function() {
       assert.closeTo(
-        julian.from_date(new Date("2000-01-01T00:00Z")),
+        julian.fromDate(new Date("2000-01-01T00:00Z")),
         2451544.5,
         0.5/86400
       );
     });
   });
 
-  describe("#to_date", function() {
+  describe("#toDate", function() {
     /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
     it("should convert 2457464.179862 to 2016-03-16T16:19Z", function() {
       assert.closeTo(
-        julian.to_date(2457464.179862).getTime(),
+        julian.toDate(2457464.179862).getTime(),
         (new Date("2016-03-16T16:19Z")).getTime(),
         500
       );
