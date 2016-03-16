@@ -1,12 +1,13 @@
 /* global describe, it */
-var assert = require('chai').assert
-var lune = require('../lib/lune')
-var julian = require('../lib/julian')
+'use strict'
+const assert = require('chai').assert
+const julian = require('../lib/julian')
+const lune = require('../lib/lune')
 
 describe('lune', function () {
   describe('#phase()', function () {
     it('should return expected values for Feb 17th data', function () {
-      var phase = lune.phase(new Date('2014-02-17T00:00-0500'))
+      const phase = lune.phase(new Date('2014-02-17T00:00-0500'))
 
       assert.closeTo(phase.phase, 0.568, 0.001)
       assert.closeTo(phase.illuminated, 0.955, 0.001)
@@ -19,7 +20,7 @@ describe('lune', function () {
 
     // http://bazaar.launchpad.net/~keturn/py-moon-phase/trunk/view/head:/moontest.py
     it('should be accurate to astronomical observations', function () {
-      var observations = [
+      const observations = [
         ['1989-01-07T19:22Z', 0.00],
         ['1989-01-14T13:58Z', 0.25],
         ['1989-01-21T21:33Z', 0.50],
@@ -59,32 +60,34 @@ describe('lune', function () {
         ['1989-09-29T21:47Z', 0.00]
       ]
 
-      var error = 0
-      var i
-      var obs
-      var e
-      for (i = 0; i < observations.length; i++) {
-        obs = observations[i]
-        e = Math.abs(lune.phase(new Date(obs[0])).phase - obs[1])
+      let error = 0
+      for (let i = 0; i < observations.length; i++) {
+        const obs = observations[i]
+
+        let e = Math.abs(lune.phase(new Date(obs[0])).phase - obs[1])
         if (e > 0.5) {
           // phase is circular
           e = 1 - e
         }
+
         error += e
       }
+
       assert.isAtMost(error / observations.length, 0.001)
     })
   })
 
   describe('#phase_hunt', function () {
     it('should handle timezones correctly', function () {
-      var d = new Date('2014-11-01T06:26-0400')
-      var hunt = lune.phase_hunt(d)
       // 1415292777000 incorrect EST time
       // 1415312577000 correct UTC time
       // date conversion is now accurate to the millisecond, but these tests
       // were written when they were only accurate to the second
-      assert.closeTo(hunt.full_date.getTime(), 1415312577000, 500)
+      assert.closeTo(
+        lune.phase_hunt(new Date('2014-11-01T06:26-0400')).full_date.getTime(),
+        1415312577000,
+        500
+      )
     })
   })
 })
