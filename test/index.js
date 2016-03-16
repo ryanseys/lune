@@ -1,5 +1,6 @@
 var assert = require("assert");
-var lune = require('../lib/lune');
+var lune = require("../lib/lune");
+var julian = require("../lib/julian");
 
 describe('lune', function() {
   describe('#phase()', function() {
@@ -22,13 +23,33 @@ describe('lune', function() {
     });
   });
 
-    describe('#phase_hunt', function() {
-        it('should handle timezones correctly', function() {
-            var d = new Date(1414837560000);
-            var hunt = lune.phase_hunt(d);
-            // 1415292777000 incorrect EST time
-            // 1415312577000 correct UTC time
-            assert(1415312577000, hunt.full_date.getTime());
-        });
+  describe('#phase_hunt', function() {
+    it('should handle timezones correctly', function() {
+      var d = new Date(1414837560000);
+      var hunt = lune.phase_hunt(d);
+      // 1415292777000 incorrect EST time
+      // 1415312577000 correct UTC time
+      assert.equal(1415312577000, hunt.full_date.getTime());
     });
+  });
+});
+
+describe("julian", function() {
+  describe("#from_date", function() {
+    /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
+    it("should convert 2000-01-01T00:00Z to 2451544.5", function() {
+      assert.equal(julian.from_date(new Date("2000-01-01T00:00Z")), 2451544.5);
+    });
+  });
+
+  describe("#to_date", function() {
+    /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
+    it("should convert 2457464.179862 to 2016-03-16T16:19Z", function() {
+      // input was only to second resolution, so lets not be too picky :)
+      var date = julian.to_date(2457464.179862);
+      date.setUTCMilliseconds(0);
+
+      assert.equal(date.getTime(), new Date("2016-03-16T16:19Z").getTime());
+    });
+  });
 });
