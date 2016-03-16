@@ -18,7 +18,7 @@
     "url": "https://github.com/ryanseys/lune/issues",
     "email": "ryan@ryanseys.com"
   },
-  "main": "index.js",
+  "main": "lib/lune.js",
   "license": "Apache-2.0",
   "devDependencies": {
     "chai": "~3.5.0",
