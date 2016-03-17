@@ -91,24 +91,29 @@ describe('lune', function () {
   })
 
   describe('#phase_range', function () {
+    const NAMES = ['new', 'q1', 'full', 'q3']
+
     /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
     it('should return all moon phases within a time range', function () {
-      const phases = lune.phase_range(
-        new Date('1989-01-01T00:00Z'),
-        new Date('1989-10-01T00:00Z')
-      )
-
       let error = 0
 
-      assert.strictEqual(phases.length, observations.length)
+      for (let name of NAMES) {
+        const actual = lune.phase_range(
+          new Date('1989-01-01T00:00Z'),
+          new Date('1989-10-01T00:00Z'),
+          name
+        )
+        const expected = observations.filter(function (x) {
+          return x[2] === name
+        })
+        assert.strictEqual(actual.length, expected.length)
 
-      for (let i = 0; i < phases.length; i++) {
-        const phase = phases[i]
-        const obs = observations[i]
+        for (let i = 0; i < actual.length; i++) {
+          const date = actual[i]
+          const obs = new Date(expected[i][0])
 
-        assert.strictEqual(phase.phase, obs[2])
-
-        error += Math.abs(phase.date.getTime() - new Date(obs[0]).getTime())
+          error += Math.abs(date.getTime() - obs.getTime())
+        }
       }
 
       // tolerate an average error of up to five minutes
