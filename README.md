@@ -100,6 +100,22 @@ console.log(some_date_phase);
 }
 ```
 
+### To search for phases between two dates:
+
+```javascript
+var lune = require('lune');
+var phase_list = lune.phase_range(new Date(2014, 1, 1), new Date(2014, 2, 1))
+console.log(phase_list);
+```
+
+#### Output:
+
+```javascript
+[ { phase: 'q1', date: Thu Feb 06 2014 14:22:33 GMT-0500 (EST) },
+  { phase: 'full', date: Fri Feb 14 2014 18:54:46 GMT-0500 (EST) },
+  { phase: 'q3', date: Sat Feb 22 2014 12:16:56 GMT-0500 (EST) } ]
+```
+
 ## Image
 
 Moon image graciously provided by [Mike DiLuigi.](https://www.behance.net/mikediluigi)

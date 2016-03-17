@@ -5,8 +5,48 @@ const julian = require('../lib/julian')
 const lune = require('../lib/lune')
 
 describe('lune', function () {
+  const observations = [
+    ['1989-01-07T19:22Z', 0.00],
+    ['1989-01-14T13:58Z', 0.25],
+    ['1989-01-21T21:33Z', 0.50],
+    ['1989-01-30T02:02Z', 0.75],
+    ['1989-02-06T07:37Z', 0.00],
+    ['1989-02-12T23:15Z', 0.25],
+    ['1989-02-20T15:32Z', 0.50],
+    ['1989-02-28T20:08Z', 0.75],
+    ['1989-03-07T18:19Z', 0.00],
+    ['1989-03-14T10:11Z', 0.25],
+    ['1989-03-22T09:58Z', 0.50],
+    ['1989-03-30T10:21Z', 0.75],
+    ['1989-04-06T03:33Z', 0.00],
+    ['1989-04-12T23:13Z', 0.25],
+    ['1989-04-21T03:13Z', 0.50],
+    ['1989-04-28T20:46Z', 0.75],
+    ['1989-05-05T11:46Z', 0.00],
+    ['1989-05-12T14:19Z', 0.25],
+    ['1989-05-20T18:16Z', 0.50],
+    ['1989-05-28T04:01Z', 0.75],
+    ['1989-06-03T19:53Z', 0.00],
+    ['1989-06-11T06:59Z', 0.25],
+    ['1989-06-19T06:57Z', 0.50],
+    ['1989-06-26T09:09Z', 0.75],
+    ['1989-07-03T04:59Z', 0.00],
+    ['1989-07-11T00:19Z', 0.25],
+    ['1989-07-18T17:42Z', 0.50],
+    ['1989-07-25T13:31Z', 0.75],
+    ['1989-08-01T16:06Z', 0.00],
+    ['1989-08-09T17:28Z', 0.25],
+    ['1989-08-17T03:07Z', 0.50],
+    ['1989-08-23T18:40Z', 0.75],
+    ['1989-08-31T05:44Z', 0.00],
+    ['1989-09-08T09:49Z', 0.25],
+    ['1989-09-15T11:51Z', 0.50],
+    ['1989-09-22T02:10Z', 0.75],
+    ['1989-09-29T21:47Z', 0.00]
+  ]
+
   describe('#phase()', function () {
-    it('should return expected values for Feb 17th data', function () {
+    it('should return expected values for-02-17th data', function () {
       const phase = lune.phase(new Date('2014-02-17T00:00-0500'))
 
       assert.closeTo(phase.phase, 0.568, 0.001)
@@ -20,50 +60,8 @@ describe('lune', function () {
 
     // http://bazaar.launchpad.net/~keturn/py-moon-phase/trunk/view/head:/moontest.py
     it('should be accurate to astronomical observations', function () {
-      const observations = [
-        ['1989-01-07T19:22Z', 0.00],
-        ['1989-01-14T13:58Z', 0.25],
-        ['1989-01-21T21:33Z', 0.50],
-        ['1989-01-30T02:02Z', 0.75],
-        ['1989-02-06T07:37Z', 0.00],
-        ['1989-02-12T23:15Z', 0.25],
-        ['1989-02-20T15:32Z', 0.50],
-        ['1989-02-28T20:08Z', 0.75],
-        ['1989-03-07T18:19Z', 0.00],
-        ['1989-03-14T10:11Z', 0.25],
-        ['1989-03-22T09:58Z', 0.50],
-        ['1989-03-30T10:21Z', 0.75],
-        ['1989-04-06T03:33Z', 0.00],
-        ['1989-04-12T23:13Z', 0.25],
-        ['1989-04-21T03:13Z', 0.50],
-        ['1989-04-28T20:46Z', 0.75],
-        ['1989-05-05T11:46Z', 0.00],
-        ['1989-05-12T14:19Z', 0.25],
-        ['1989-05-20T18:16Z', 0.50],
-        ['1989-05-28T04:01Z', 0.75],
-        ['1989-06-03T19:53Z', 0.00],
-        ['1989-06-11T06:59Z', 0.25],
-        ['1989-06-19T06:57Z', 0.50],
-        ['1989-06-26T09:09Z', 0.75],
-        ['1989-07-03T04:59Z', 0.00],
-        ['1989-07-11T00:19Z', 0.25],
-        ['1989-07-18T17:42Z', 0.50],
-        ['1989-07-25T13:31Z', 0.75],
-        ['1989-08-01T16:06Z', 0.00],
-        ['1989-08-09T17:28Z', 0.25],
-        ['1989-08-17T03:07Z', 0.50],
-        ['1989-08-23T18:40Z', 0.75],
-        ['1989-08-31T05:44Z', 0.00],
-        ['1989-09-08T09:49Z', 0.25],
-        ['1989-09-15T11:51Z', 0.50],
-        ['1989-09-22T02:10Z', 0.75],
-        ['1989-09-29T21:47Z', 0.00]
-      ]
-
       let error = 0
-      for (let i = 0; i < observations.length; i++) {
-        const obs = observations[i]
-
+      for (let obs of observations) {
         let e = Math.abs(lune.phase(new Date(obs[0])).phase - obs[1])
         if (e > 0.5) {
           // phase is circular
@@ -73,6 +71,7 @@ describe('lune', function () {
         error += e
       }
 
+      // tolerate an average error of up to a tenth of a percent
       assert.isAtMost(error / observations.length, 0.001)
     })
   })
@@ -88,6 +87,34 @@ describe('lune', function () {
         1415312577000,
         500
       )
+    })
+  })
+
+  describe('#phase_range', function () {
+    const NAMES = ['new', 'q1', 'full', 'q3']
+
+    /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
+    it('should return all moon phases within a time range', function () {
+      const phases = lune.phase_range(
+        new Date('1989-01-01T00:00Z'),
+        new Date('1989-10-01T00:00Z')
+      )
+
+      let error = 0
+
+      assert.strictEqual(phases.length, observations.length)
+
+      for (let i = 0; i < phases.length; i++) {
+        const phase = phases[i]
+        const obs = observations[i]
+
+        assert.strictEqual(phase.phase, NAMES[Math.round(4 * obs[1])])
+
+        error += Math.abs(phase.date.getTime() - new Date(obs[0]).getTime())
+      }
+
+      // tolerate an average error of up to five minutes
+      assert.isAtMost(error / observations.length, 300000)
     })
   })
 })
