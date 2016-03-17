@@ -6,43 +6,43 @@ const lune = require('../lib/lune')
 
 describe('lune', function () {
   const observations = [
-    ['1989-01-07T19:22Z', 0.00, 'new'],
-    ['1989-01-14T13:58Z', 0.25, 'q1'],
-    ['1989-01-21T21:33Z', 0.50, 'full'],
-    ['1989-01-30T02:02Z', 0.75, 'q3'],
-    ['1989-02-06T07:37Z', 0.00, 'new'],
-    ['1989-02-12T23:15Z', 0.25, 'q1'],
-    ['1989-02-20T15:32Z', 0.50, 'full'],
-    ['1989-02-28T20:08Z', 0.75, 'q3'],
-    ['1989-03-07T18:19Z', 0.00, 'new'],
-    ['1989-03-14T10:11Z', 0.25, 'q1'],
-    ['1989-03-22T09:58Z', 0.50, 'full'],
-    ['1989-03-30T10:21Z', 0.75, 'q3'],
-    ['1989-04-06T03:33Z', 0.00, 'new'],
-    ['1989-04-12T23:13Z', 0.25, 'q1'],
-    ['1989-04-21T03:13Z', 0.50, 'full'],
-    ['1989-04-28T20:46Z', 0.75, 'q3'],
-    ['1989-05-05T11:46Z', 0.00, 'new'],
-    ['1989-05-12T14:19Z', 0.25, 'q1'],
-    ['1989-05-20T18:16Z', 0.50, 'full'],
-    ['1989-05-28T04:01Z', 0.75, 'q3'],
-    ['1989-06-03T19:53Z', 0.00, 'new'],
-    ['1989-06-11T06:59Z', 0.25, 'q1'],
-    ['1989-06-19T06:57Z', 0.50, 'full'],
-    ['1989-06-26T09:09Z', 0.75, 'q3'],
-    ['1989-07-03T04:59Z', 0.00, 'new'],
-    ['1989-07-11T00:19Z', 0.25, 'q1'],
-    ['1989-07-18T17:42Z', 0.50, 'full'],
-    ['1989-07-25T13:31Z', 0.75, 'q3'],
-    ['1989-08-01T16:06Z', 0.00, 'new'],
-    ['1989-08-09T17:28Z', 0.25, 'q1'],
-    ['1989-08-17T03:07Z', 0.50, 'full'],
-    ['1989-08-23T18:40Z', 0.75, 'q3'],
-    ['1989-08-31T05:44Z', 0.00, 'new'],
-    ['1989-09-08T09:49Z', 0.25, 'q1'],
-    ['1989-09-15T11:51Z', 0.50, 'full'],
-    ['1989-09-22T02:10Z', 0.75, 'q3'],
-    ['1989-09-29T21:47Z', 0.00, 'new']
+    ['1989-01-07T19:22Z', 0.00, lune.PHASE_NEW],
+    ['1989-01-14T13:58Z', 0.25, lune.PHASE_FIRST],
+    ['1989-01-21T21:33Z', 0.50, lune.PHASE_FULL],
+    ['1989-01-30T02:02Z', 0.75, lune.PHASE_LAST],
+    ['1989-02-06T07:37Z', 0.00, lune.PHASE_NEW],
+    ['1989-02-12T23:15Z', 0.25, lune.PHASE_FIRST],
+    ['1989-02-20T15:32Z', 0.50, lune.PHASE_FULL],
+    ['1989-02-28T20:08Z', 0.75, lune.PHASE_LAST],
+    ['1989-03-07T18:19Z', 0.00, lune.PHASE_NEW],
+    ['1989-03-14T10:11Z', 0.25, lune.PHASE_FIRST],
+    ['1989-03-22T09:58Z', 0.50, lune.PHASE_FULL],
+    ['1989-03-30T10:21Z', 0.75, lune.PHASE_LAST],
+    ['1989-04-06T03:33Z', 0.00, lune.PHASE_NEW],
+    ['1989-04-12T23:13Z', 0.25, lune.PHASE_FIRST],
+    ['1989-04-21T03:13Z', 0.50, lune.PHASE_FULL],
+    ['1989-04-28T20:46Z', 0.75, lune.PHASE_LAST],
+    ['1989-05-05T11:46Z', 0.00, lune.PHASE_NEW],
+    ['1989-05-12T14:19Z', 0.25, lune.PHASE_FIRST],
+    ['1989-05-20T18:16Z', 0.50, lune.PHASE_FULL],
+    ['1989-05-28T04:01Z', 0.75, lune.PHASE_LAST],
+    ['1989-06-03T19:53Z', 0.00, lune.PHASE_NEW],
+    ['1989-06-11T06:59Z', 0.25, lune.PHASE_FIRST],
+    ['1989-06-19T06:57Z', 0.50, lune.PHASE_FULL],
+    ['1989-06-26T09:09Z', 0.75, lune.PHASE_LAST],
+    ['1989-07-03T04:59Z', 0.00, lune.PHASE_NEW],
+    ['1989-07-11T00:19Z', 0.25, lune.PHASE_FIRST],
+    ['1989-07-18T17:42Z', 0.50, lune.PHASE_FULL],
+    ['1989-07-25T13:31Z', 0.75, lune.PHASE_LAST],
+    ['1989-08-01T16:06Z', 0.00, lune.PHASE_NEW],
+    ['1989-08-09T17:28Z', 0.25, lune.PHASE_FIRST],
+    ['1989-08-17T03:07Z', 0.50, lune.PHASE_FULL],
+    ['1989-08-23T18:40Z', 0.75, lune.PHASE_LAST],
+    ['1989-08-31T05:44Z', 0.00, lune.PHASE_NEW],
+    ['1989-09-08T09:49Z', 0.25, lune.PHASE_FIRST],
+    ['1989-09-15T11:51Z', 0.50, lune.PHASE_FULL],
+    ['1989-09-22T02:10Z', 0.75, lune.PHASE_LAST],
+    ['1989-09-29T21:47Z', 0.00, lune.PHASE_NEW]
   ]
 
   describe('#phase()', function () {
@@ -91,20 +91,25 @@ describe('lune', function () {
   })
 
   describe('#phase_range', function () {
-    const NAMES = ['new', 'q1', 'full', 'q3']
+    const PHASES = [
+      lune.PHASE_NEW,
+      lune.PHASE_FIRST,
+      lune.PHASE_FULL,
+      lune.PHASE_LAST
+    ]
 
     /* http://aa.usno.navy.mil/data/docs/JulianDate.php */
     it('should return all moon phases within a time range', function () {
       let error = 0
 
-      for (let name of NAMES) {
+      for (let phase of PHASES) {
         const actual = lune.phase_range(
           new Date('1989-01-01T00:00Z'),
           new Date('1989-10-01T00:00Z'),
-          name
+          phase
         )
         const expected = observations.filter(function (x) {
-          return x[2] === name
+          return x[2] === phase
         })
         assert.strictEqual(actual.length, expected.length)
 

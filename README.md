@@ -105,19 +105,28 @@ console.log(some_date_phase);
 ```javascript
 // print all full moons in the first quarter of 2014
 var lune = require('lune');
-var phase_list = lune.phase_range(new Date(2014, 1, 1), new Date(2014, 3, 1), 'full')
+var phase_list = lune.phase_range(
+  new Date(2014, 0, 1),
+  new Date(2014, 2, 31),
+  lune.PHASE_NEW
+)
 console.log(phase_list);
 ```
 
-Possible values for the third argument of the function are `'new'` (new moon),
-`'q1'` (first quarter moon), `'full'` (full moon), `'q3'` (last quarter moon).
-(These are analogous to the properties of the object returned by `phase_hunt`.)
+Possible values for the third argument of the function are:
+
+*   `lune.PHASE_NEW` (new moon)
+*   `lune.PHASE_FIRST` (first quarter moon)
+*   `lune.PHASE_FULL` (full moon)
+*   `lune.PHASE_LAST` (third or last quarter moon)
 
 #### Output:
 
 ```javascript
-[ Fri Feb 14 2014 18:54:46 GMT-0500 (EST),
-  Sun Mar 16 2014 13:10:46 GMT-0400 (EDT) ]
+[ Wed Jan 01 2014 06:15:02 GMT-0500 (EST),
+  Thu Jan 30 2014 16:40:35 GMT-0500 (EST),
+  Sat Mar 01 2014 03:02:41 GMT-0500 (EST),
+  Sun Mar 30 2014 14:48:06 GMT-0400 (EDT) ]
 ```
 
 ## Image
