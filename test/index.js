@@ -46,7 +46,7 @@ describe('lune', function () {
   ]
 
   describe('#phase()', function () {
-    it('should return expected values for-02-17th data', function () {
+    it('should return expected values for Feb 17th data', function () {
       const phase = lune.phase(new Date('2014-02-17T00:00-0500'))
 
       assert.closeTo(phase.phase, 0.568, 0.001)
