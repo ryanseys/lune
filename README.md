@@ -109,6 +109,10 @@ var phase_list = lune.phase_range(new Date(2014, 1, 1), new Date(2014, 3, 1), 'f
 console.log(phase_list);
 ```
 
+Possible values for the third argument of the function are `'new'` (new moon),
+`'q1'` (first quarter moon), `'full'` (full moon), `'q3'` (last quarter moon).
+(These are analogous to the properties of the object returned by `phase_hunt`.)
+
 #### Output:
 
 ```javascript
