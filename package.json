@@ -18,6 +18,9 @@
     "url": "https://github.com/ryanseys/lune/issues",
     "email": "ryan@ryanseys.com"
   },
+  "engines" : {
+    "node" : ">=4.0.0"
+  },
   "main": "lib/lune.js",
   "license": "Apache-2.0",
   "devDependencies": {
