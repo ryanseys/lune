@@ -40,7 +40,7 @@ console.log(current_phase);
 
 ```javascript
 var lune = require('lune');
-var some_date = new Date(2014, 1, 17);
+var some_date = new Date("2014-02-17T00:00-0500");
 var some_date_phase = lune.phase(some_date);
 console.log(some_date_phase);
 ```
@@ -83,7 +83,7 @@ console.log(recent_phases);
 
 ```javascript
 var lune = require('lune');
-var some_date = new Date(2014, 1, 17);
+var some_date = new Date("2014-02-17T00:00-0500");
 var some_date_phase = lune.phase_hunt(some_date);
 console.log(some_date_phase);
 ```
