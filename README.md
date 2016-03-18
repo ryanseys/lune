@@ -106,9 +106,9 @@ console.log(some_date_phase);
 // print all full moons in the first quarter of 2014
 var lune = require('lune');
 var phase_list = lune.phase_range(
-  new Date(2014, 0, 1),
-  new Date(2014, 2, 31),
-  lune.PHASE_NEW
+  new Date("2014-01-01T00:00:00.000Z"),
+  new Date("2014-03-31T23:59:59.999Z"),
+  lune.PHASE_FULL
 )
 console.log(phase_list);
 ```
