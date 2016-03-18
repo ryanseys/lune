@@ -25,15 +25,13 @@ console.log(current_phase)
 #### Output:
 
 ```javascript
-{
-  phase: 0.5358014231208499,
-  illuminated: 0.9874029678753915,
-  age: 15.822531440340462,
-  distance: 399704.2447849964,
-  angular_diameter: 0.4982638055473454,
-  sun_distance: 147790721.2629182,
-  sun_angular_diameter: 0.539600532418603
-}
+{ phase: 0.3435664924086369,
+  illuminated: 0.7773055846628978,
+  age: 10.1457207715498,
+  distance: 386679.7626047325,
+  angular_diameter: 0.5150467579643708,
+  sun_distance: 148929846.0148686,
+  sun_angular_diameter: 0.5354732715700135 }
 ```
 
 ### To calculate phase information for a *specific* date:
@@ -48,15 +46,13 @@ console.log(some_date_phase)
 #### Output:
 
 ```javascript
-{
-  phase: 0.5616632223402672,
-  illuminated: 0.9629393807872504,
-  age: 16.586245595613818,
-  distance: 396868.3763643785,
-  angular_diameter: 0.5018242066159135,
-  sun_distance: 147816061.66410872,
-  sun_angular_diameter: 0.5395080276270386
-}
+{ phase: 0.568204641580006,
+  illuminated: 0.9547862069882863,
+  age: 16.779417556565985,
+  distance: 396084.54752883443,
+  angular_diameter: 0.5028172882344054,
+  sun_distance: 147822484.14817196,
+  sun_angular_diameter: 0.5394845874736046 }
 ```
 
 ### To search for recent phases around the *current* date:
@@ -70,13 +66,11 @@ console.log(recent_phases)
 #### Output:
 
 ```javascript
-{
-  new_date: Thu Jan 30 2014 21:40:35 GMT-0500 (EST),
-  q1_date: Thu Feb 06 2014 19:22:34 GMT-0500 (EST),
-  full_date: Fri Feb 14 2014 23:54:47 GMT-0500 (EST),
-  q3_date: Sat Feb 22 2014 17:16:56 GMT-0500 (EST),
-  nextnew_date: Sat Mar 01 2014 08:02:42 GMT-0500 (EST)
-}
+{ new_date: Tue Mar 08 2016 20:55:59 GMT-0500 (EST),
+  q1_date: Tue Mar 15 2016 13:04:23 GMT-0400 (EDT),
+  full_date: Wed Mar 23 2016 08:01:38 GMT-0400 (EDT),
+  q3_date: Thu Mar 31 2016 11:18:41 GMT-0400 (EDT),
+  nextnew_date: Thu Apr 07 2016 07:25:20 GMT-0400 (EDT) }
 ```
 
 ### To search for recent phases around a *specific* date:
@@ -91,13 +85,11 @@ console.log(some_date_phase)
 #### Output:
 
 ```javascript
-{
-  new_date: Thu Jan 30 2014 21:40:35 GMT-0500 (EST),
-  q1_date: Thu Feb 06 2014 19:22:34 GMT-0500 (EST),
-  full_date: Fri Feb 14 2014 23:54:47 GMT-0500 (EST),
-  q3_date: Sat Feb 22 2014 17:16:56 GMT-0500 (EST),
-  nextnew_date: Sat Mar 01 2014 08:02:42 GMT-0500 (EST)
-}
+{ new_date: Thu Jan 30 2014 16:40:35 GMT-0500 (EST),
+  q1_date: Thu Feb 06 2014 14:22:33 GMT-0500 (EST),
+  full_date: Fri Feb 14 2014 18:54:46 GMT-0500 (EST),
+  q3_date: Sat Feb 22 2014 12:16:56 GMT-0500 (EST),
+  nextnew_date: Sat Mar 01 2014 03:02:41 GMT-0500 (EST) }
 ```
 
 ### To search for phases between two dates:
