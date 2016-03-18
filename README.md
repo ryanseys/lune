@@ -17,9 +17,9 @@ npm install lune
 ### To calculate *current* phase information:
 
 ```javascript
-var lune = require('lune');
-var current_phase = lune.phase();
-console.log(current_phase);
+var lune = require('lune')
+var current_phase = lune.phase()
+console.log(current_phase)
 ```
 
 #### Output:
@@ -39,10 +39,10 @@ console.log(current_phase);
 ### To calculate phase information for a *specific* date:
 
 ```javascript
-var lune = require('lune');
-var some_date = new Date("2014-02-17T00:00-0500");
-var some_date_phase = lune.phase(some_date);
-console.log(some_date_phase);
+var lune = require('lune')
+var some_date = new Date('2014-02-17T00:00-0500')
+var some_date_phase = lune.phase(some_date)
+console.log(some_date_phase)
 ```
 
 #### Output:
@@ -62,9 +62,9 @@ console.log(some_date_phase);
 ### To search for recent phases around the *current* date:
 
 ```javascript
-var lune = require('lune');
-var recent_phases = lune.phase_hunt();
-console.log(recent_phases);
+var lune = require('lune')
+var recent_phases = lune.phase_hunt()
+console.log(recent_phases)
 ```
 
 #### Output:
@@ -82,10 +82,10 @@ console.log(recent_phases);
 ### To search for recent phases around a *specific* date:
 
 ```javascript
-var lune = require('lune');
-var some_date = new Date("2014-02-17T00:00-0500");
-var some_date_phase = lune.phase_hunt(some_date);
-console.log(some_date_phase);
+var lune = require('lune')
+var some_date = new Date('2014-02-17T00:00-0500')
+var some_date_phase = lune.phase_hunt(some_date)
+console.log(some_date_phase)
 ```
 
 #### Output:
@@ -104,13 +104,13 @@ console.log(some_date_phase);
 
 ```javascript
 // print all full moons in the first quarter of 2014
-var lune = require('lune');
+var lune = require('lune')
 var phase_list = lune.phase_range(
-  new Date("2014-01-01T00:00:00.000Z"),
-  new Date("2014-03-31T23:59:59.999Z"),
+  new Date('2014-01-01T00:00:00.000Z'),
+  new Date('2014-03-31T23:59:59.999Z'),
   lune.PHASE_FULL
 )
-console.log(phase_list);
+console.log(phase_list)
 ```
 
 Possible values for the third argument of the function are:
