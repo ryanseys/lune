@@ -108,8 +108,8 @@ describe('lune', function () {
           new Date('1989-10-01T00:00Z'),
           phase
         )
-        const expected = observations.filter(function (x) {
-          return x[2] === phase
+        const expected = observations.filter(function (obs) {
+          return obs[2] === phase
         })
         assert.strictEqual(actual.length, expected.length)
 
