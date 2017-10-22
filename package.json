@@ -21,14 +21,18 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "main": "lib/lune.js",
+  "main": "dist/lune.js",
   "license": "Apache-2.0",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "chai": "~3.5.0",
     "mocha": "~2.4.5",
     "standard": "^6.0.8"
   },
   "scripts": {
-    "test": "standard && mocha --reporter min"
+    "test": "standard && mocha --reporter min",
+    "build": "babel lib --out-dir dist"
   }
 }
