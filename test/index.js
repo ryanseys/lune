@@ -46,16 +46,30 @@ describe('lune', function () {
   ]
 
   describe('#phase()', function () {
-    it('should return expected values for Feb 17th data', function () {
+    it('should return expected values for 2014-02-17', function () {
       const phase = lune.phase(new Date('2014-02-17T00:00-0500'))
 
       assert.closeTo(phase.phase, 0.568, 0.001)
       assert.closeTo(phase.illuminated, 0.955, 0.001)
       assert.closeTo(phase.age, 16.779, 0.030)
-      assert.closeTo(phase.distance, 396084.5, 384.4)
-      assert.closeTo(phase.angular_diameter, 0.5028, 0.0005)
       assert.closeTo(phase.sun_distance, 147822500, 149600)
       assert.closeTo(phase.sun_angular_diameter, 0.5395, 0.0005)
+    })
+
+    // Astronomical Algorithms, 2nd ed., p. 347
+    it('should return expected values for 1992-04-12', function () {
+      const phase = lune.phase(new Date('1992-04-12'))
+
+      assert.closeTo(phase.illuminated, 0.6802, 0.0001)
+      assert.closeTo(phase.distance, 368405, 400)
+      assert.closeTo(phase.angular_diameter, 0.5405, 0.0005)
+    })
+
+    // Astronomical Algorithms, 2nd ed., p. 169
+    it('should return expected values for 1992-10-13', function () {
+      const phase = lune.phase(new Date('1992-10-13'))
+
+      assert.closeTo(phase.sun_distance, 149240000, 10000)
     })
 
     // http://bazaar.launchpad.net/~keturn/py-moon-phase/trunk/view/head:/moontest.py
