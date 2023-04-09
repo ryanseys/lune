@@ -26,9 +26,11 @@
   "devDependencies": {
     "chai": "~4.2.0",
     "mocha": "~6.1.4",
-    "standard": "^12.0.1"
+    "standard": "^12.0.1",
+    "typescript": "^5.0.4"
   },
   "scripts": {
-    "test": "standard && mocha --reporter min"
+    "test": "standard && mocha --reporter min",
+    "build": "tsc"
   }
 }
